@@ -6,12 +6,12 @@ import com.example.posiciones_back.models.Equipo;
 
 public class EquipoMapper {
 
-    public Equipo toModel(EquipoRequest request) {
+    public Equipo toModel(EquipoRequest equipoRequest) {
         Equipo equipo = new Equipo();
 
-        equipo.setNombre(request.getNombre());
-        equipo.setLocalidad(request.getLocalidad());
-        equipo.setCategoria(request.getCategoria());
+        equipo.setNombre(equipoRequest.getNombre());
+        equipo.setLocalidad(equipoRequest.getLocalidad());
+        equipo.setCategoria(equipoRequest.getCategoria());
         return equipo;
     }
 
