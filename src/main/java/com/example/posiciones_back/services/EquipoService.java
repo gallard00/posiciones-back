@@ -17,8 +17,8 @@ public class EquipoService {
     @Autowired
     private EquipoMapper equipoMapper;
 
-    public EquipoResponse crearEquipo (EquipoRequest request) {
-        Equipo equipo = equipoMapper.toModel(request);
+    public EquipoResponse crearEquipo (EquipoRequest equipoRequest) {
+        Equipo equipo = equipoMapper.toModel(equipoRequest);
         equipo = equipoRepository.save(equipo);
         return equipoMapper.toResponse(equipo);
     }
@@ -40,13 +40,13 @@ public class EquipoService {
                 .collect(Collectors.toList());
     }
 
-    public EquipoResponse updateEquipo(Long id, EquipoRequest request) {
+    public EquipoResponse updateEquipo(Long id, EquipoRequest equipoRequest) {
         Equipo equipo = equipoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Equipo no encontrado"));
 
-        equipo.setNombre(request.getNombre());
-        equipo.setCategoria(request.getCategoria());
-        equipo.setLocalidad(request.getLocalidad());
+        equipo.setNombre(equipoRequest.getNombre());
+        equipo.setCategoria(equipoRequest.getCategoria());
+        equipo.setLocalidad(equipoRequest.getLocalidad());
 
         equipo = equipoRepository.save(equipo);
         return equipoMapper.toResponse(equipo);
